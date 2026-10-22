@@ -115,3 +115,21 @@
 3. Verification:
    - Ran `npm run build`; successfully verified relative assets (`./assets/...`) in `dist/index.html`.
 ----------------------------------------------------------------------------------------------------
+[TIMESTAMP]: 2026-10-22 16:25:00 IST
+[TASK]: Add interactive "Leave a Message" text box in Contact section
+
+[ISSUES / ERRORS]:
+- Issue: Temporary local EPERM occurred during local npm ci while dev server held active lock on esbuild binary. Restored via npm install and verified clean build.
+
+[CHANGES MADE]:
+1. src/App.jsx:
+   - Added React state for message form: `msgName`, `msgBody`, `submitted`.
+   - Built a sleek "Leave a Message" contact card alongside existing contact links.
+   - Included input for visitor name, multi-line textarea for message, and styled send button with icon.
+   - Connected submission handler via pre-formatted `mailto:` link directly targeting Praveen's email without backend requirements.
+2. src/index.css:
+   - Styled `.contact-grid`, `.contact-card`, `.field-group`, `.send-btn`, and feedback banner.
+   - Added responsive single-column layout rule for screen widths <= 900px.
+3. Verification:
+   - Ran `npm run build`; production bundle compiled cleanly in 491ms with 0 errors.
+----------------------------------------------------------------------------------------------------

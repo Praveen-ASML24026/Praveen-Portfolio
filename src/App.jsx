@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Terminal from './Terminal.jsx'
 import { person, links, projects, experience, skills, certs } from './data'
 import profilePhoto from './compresed.png'
@@ -5,6 +6,19 @@ import profilePhoto from './compresed.png'
 export default function App() {
   const featured = projects.filter((p) => p.featured)
   const rest = projects.filter((p) => !p.featured)
+  const [msgName, setMsgName] = useState('')
+  const [msgBody, setMsgBody] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSendMessage = (e) => {
+    e.preventDefault()
+    if (!msgBody.trim()) return
+    const subject = encodeURIComponent(`Portfolio Message from ${msgName || 'Visitor'}`)
+    const body = encodeURIComponent(`Hi Praveen,\n\n${msgBody}\n\nFrom: ${msgName}`)
+    window.location.href = `mailto:${links.email}?subject=${subject}&body=${body}`
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 5000)
+  }
 
   return (
     <>
@@ -114,16 +128,55 @@ export default function App() {
 
         <section id="contact" className="wrap section last">
           <h2>Contact</h2>
-          <p>I am open to internships and entry-level roles. The quickest way to reach me is email.</p>
-          <p className="mail">
-            <a href={'mailto:' + links.email}>{links.email}</a>
-          </p>
-          <p className="socials">
-            <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
-            <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href={links.hackerrank} target="_blank" rel="noreferrer">HackerRank</a>
-            <a href={links.leetcode} target="_blank" rel="noreferrer">LeetCode</a>
-          </p>
+          <p>I am open to internships, full-time roles, and collaborative projects. Feel free to leave a message below or email directly.</p>
+
+          <div className="contact-grid">
+            <div className="contact-info">
+              <p className="mail">
+                <a href={'mailto:' + links.email}>{links.email}</a>
+              </p>
+              <div className="socials">
+                <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
+                <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href={links.hackerrank} target="_blank" rel="noreferrer">HackerRank</a>
+                <a href={links.leetcode} target="_blank" rel="noreferrer">LeetCode</a>
+              </div>
+            </div>
+
+            <form className="contact-card" onSubmit={handleSendMessage}>
+              <h3>Leave a Message</h3>
+              <div className="field-group">
+                <label htmlFor="msg-name">Your Name</label>
+                <input
+                  id="msg-name"
+                  type="text"
+                  placeholder="e.g. John Doe / Recruiter"
+                  value={msgName}
+                  onChange={(e) => setMsgName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="field-group">
+                <label htmlFor="msg-body">Message</label>
+                <textarea
+                  id="msg-body"
+                  rows="4"
+                  placeholder="Hi Praveen, I would love to connect regarding..."
+                  value={msgBody}
+                  onChange={(e) => setMsgBody(e.target.value)}
+                  required
+                />
+              </div>
+              <button type="submit" className="btn primary send-btn">
+                <span>Send Message</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+              {submitted && <p className="form-feedback">Opening your email app to send...</p>}
+            </form>
+          </div>
         </section>
       </main>
 
@@ -131,3 +184,4 @@ export default function App() {
     </>
   )
 }
+
