@@ -26,36 +26,42 @@ export const projects = [
     tech: 'Local-first AI assistant',
     featured: true,
     tags: ['Python', 'AI & ML', 'Local AI', 'VS Code', 'Git'],
+    github: 'https://github.com/Praveen-ASML24026',
     text: 'A local-first AI computer assistant for task planning, coding assistance and computer automation.',
   },
   {
     name: 'Random Password Generator with RSA',
     tech: 'Java, Swing, MySQL',
     tags: ['Java', 'MySQL', 'Git'],
+    github: 'https://github.com/Praveen-ASML24026',
     text: 'Desktop password manager using RSA 2048-bit asymmetric encryption. Generates random passwords, keeps an encrypted vault organised by label, decrypts on demand, and stores the key pair in MySQL.',
   },
   {
     name: 'AI Insurance Claim Approval',
     tech: 'Python, MySQL, XGBoost',
     tags: ['Python', 'MySQL', 'XGBoost', 'Jupyter Notebook'],
+    github: 'https://github.com/Praveen-ASML24026',
     text: 'Claim analysis system that identifies why claims are rejected and suggests corrective actions.',
   },
   {
     name: 'Face Recognition Attendance System',
     tech: 'Python',
     tags: ['Python', 'Git'],
+    github: 'https://github.com/Praveen-ASML24026',
     text: 'Real-time attendance from a live webcam feed. Matches faces against a known image database and logs names and timestamps to CSV, with duplicate prevention per session.',
   },
   {
     name: 'Library Management System',
     tech: 'Python, MySQL',
     tags: ['Python', 'MySQL', 'Data Structures'],
+    github: 'https://github.com/Praveen-ASML24026',
     text: 'Terminal-based library system with custom HashMap, linked list, stack, queue and BST implementations. Powers member and book management, queue-based borrowing, stack-based undo/redo and a capped activity log.',
   },
   {
     name: 'Student Registration System',
     tech: 'HTML, CSS, MySQL',
     tags: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+    github: 'https://github.com/Praveen-ASML24026',
     text: 'Web-based registration form with client-side validation using HTML5 form attributes.',
   },
 ]
@@ -91,7 +97,51 @@ export const skills = [
 ]
 
 export const certs = {
-  summary: '150+ certifications across Microsoft, UiPath, Salesforce and MongoDB.',
+  summary: '150+ certifications across Microsoft, UiPath, Salesforce, MongoDB and Java.',
+  items: [
+    {
+      title: 'Java Programming Certificate',
+      issuer: 'Besant Technologies',
+      year: '2025',
+      category: 'Java & OOP',
+      icon: '☕',
+    },
+    {
+      title: 'Salesforce Agentforce Specialist (Agent Blazer)',
+      issuer: 'Salesforce',
+      year: 'Nov 2025',
+      category: 'AI & Cloud',
+      icon: '⚡',
+    },
+    {
+      title: 'Database Admin Path Certificate',
+      issuer: 'MongoDB University',
+      year: '2025',
+      category: 'Database',
+      icon: '🍃',
+    },
+    {
+      title: 'Data Fabric (v2024.10)',
+      issuer: 'UiPath',
+      year: '2024',
+      category: 'Automation & RPA',
+      icon: '🤖',
+    },
+    {
+      title: 'Azure AI Fundamentals (AI-900 Prep)',
+      issuer: 'Microsoft Learn',
+      year: '2025',
+      category: 'Cloud & AI',
+      icon: '☁️',
+    },
+    {
+      title: 'SQL',
+      issuer: 'HackerRank & Coursera',
+      year: '2025',
+      category: 'Database',
+      icon: '🗄️',
+    },
+  ],
   highlights: [
     'Java Programming Certificate, Besant Technologies, 2025',
     'MongoDB Database Admin Path Certificate',
