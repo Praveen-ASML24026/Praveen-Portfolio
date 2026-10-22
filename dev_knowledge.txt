@@ -133,3 +133,24 @@
 3. Verification:
    - Ran `npm run build`; production bundle compiled cleanly in 491ms with 0 errors.
 ----------------------------------------------------------------------------------------------------
+[TIMESTAMP]: 2026-10-22 16:39:00 IST
+[TASK]: Implement 3 unique features (AI Praveen assistant, interactive skill filters, Easter eggs)
+
+[ISSUES / ERRORS]:
+- None. Build passed cleanly in 546ms.
+
+[CHANGES MADE]:
+1. src/Terminal.jsx:
+   - Built "AI Praveen" interactive conversational query engine responding in real-time to recruiter questions regarding Java skills, AI/ML background, internship availability, and reasons to hire.
+   - Added Easter eggs: `matrix` (green falling digital rain simulation), `sudo` (recruiter root access joke), `coffee` (steaming ASCII Java cup), `resume` (structured career breakdown), and `theme` (switches between Obsidian Navy, Matrix Green, and Hacker Amber).
+   - Added `🤖 why hire?` quick action button directly in the terminal bar.
+2. src/App.jsx & src/data.js:
+   - Added project tags (`#Java`, `#Python`, `#MySQL`, `#XGBoost`, etc.) to all portfolio projects.
+   - Connected Skills chips to a dynamic filter: clicking any skill tag automatically filters projects, highlights matching tags, and shows an active filter bar with a 1-click clear button.
+3. src/index.css:
+   - Added themes for Terminal: `.theme-matrix` and `.theme-amber`.
+   - Added matrix digital rain animation (`matrixDrop`).
+   - Styled project tags, active filter pills, and highlighted skill chips.
+4. Verification:
+   - Ran `npm run build`; production bundle compiled cleanly in 546ms with 0 errors.
+----------------------------------------------------------------------------------------------------

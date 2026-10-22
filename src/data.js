@@ -25,31 +25,37 @@ export const projects = [
     name: 'MAX',
     tech: 'Local-first AI assistant',
     featured: true,
+    tags: ['Python', 'AI & ML', 'Local AI', 'VS Code', 'Git'],
     text: 'A local-first AI computer assistant for task planning, coding assistance and computer automation.',
   },
   {
     name: 'Random Password Generator with RSA',
     tech: 'Java, Swing, MySQL',
+    tags: ['Java', 'MySQL', 'Git'],
     text: 'Desktop password manager using RSA 2048-bit asymmetric encryption. Generates random passwords, keeps an encrypted vault organised by label, decrypts on demand, and stores the key pair in MySQL.',
   },
   {
     name: 'AI Insurance Claim Approval',
     tech: 'Python, MySQL, XGBoost',
+    tags: ['Python', 'MySQL', 'XGBoost', 'Jupyter Notebook'],
     text: 'Claim analysis system that identifies why claims are rejected and suggests corrective actions.',
   },
   {
     name: 'Face Recognition Attendance System',
     tech: 'Python',
+    tags: ['Python', 'Git'],
     text: 'Real-time attendance from a live webcam feed. Matches faces against a known image database and logs names and timestamps to CSV, with duplicate prevention per session.',
   },
   {
     name: 'Library Management System',
     tech: 'Python, MySQL',
+    tags: ['Python', 'MySQL', 'Data Structures'],
     text: 'Terminal-based library system with custom HashMap, linked list, stack, queue and BST implementations. Powers member and book management, queue-based borrowing, stack-based undo/redo and a capped activity log.',
   },
   {
     name: 'Student Registration System',
     tech: 'HTML, CSS, MySQL',
+    tags: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
     text: 'Web-based registration form with client-side validation using HTML5 form attributes.',
   },
 ]
@@ -67,12 +73,12 @@ export const experience = [
     when: 'Nov 2025 to Dec 2025',
     text: 'Worked on coding, testing and documentation, with hands-on exposure to the SDLC and team-based development.',
   },
-  {
-    title: 'Intern, Security and Server Management',
-    org: 'AKTech Information Technology Solutions',
-    when: '',
-    text: 'Worked on cloud infrastructure, deployment processes, Linux systems and DevOps workflows.',
-  },
+  // {
+  //   title: 'Intern, Security and Server Management',
+  //   org: 'AKTech Information Technology Solutions',
+  //   when: '',
+  //   text: 'Worked on cloud infrastructure, deployment processes, Linux systems and DevOps workflows.',
+  // },
 ]
 
 export const skills = [

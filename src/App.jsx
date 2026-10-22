@@ -6,9 +6,24 @@ import profilePhoto from './compresed.png'
 export default function App() {
   const featured = projects.filter((p) => p.featured)
   const rest = projects.filter((p) => !p.featured)
+  const [activeSkill, setActiveSkill] = useState(null)
   const [msgName, setMsgName] = useState('')
   const [msgBody, setMsgBody] = useState('')
   const [submitted, setSubmitted] = useState(false)
+
+  const isMatch = (p) => {
+    if (!activeSkill) return true
+    const term = activeSkill.toLowerCase()
+    return (
+      (p.tags && p.tags.some((t) => t.toLowerCase() === term)) ||
+      (p.tech && p.tech.toLowerCase().includes(term)) ||
+      (p.text && p.text.toLowerCase().includes(term))
+    )
+  }
+
+  const filteredFeatured = featured.filter(isMatch)
+  const filteredRest = rest.filter(isMatch)
+  const totalCount = filteredFeatured.length + filteredRest.length
 
   const handleSendMessage = (e) => {
     e.preventDefault()
@@ -60,22 +75,81 @@ export default function App() {
         </section>
 
         <section id="projects" className="wrap section">
-          <h2>Projects</h2>
-          {featured.map((p) => (
+          <div className="section-head">
+            <h2>Projects</h2>
+            {activeSkill && (
+              <div className="filter-pill-active">
+                <span>Filter: <strong>{activeSkill}</strong> ({totalCount} found)</span>
+                <button
+                  type="button"
+                  className="btn-clear-filter"
+                  onClick={() => setActiveSkill(null)}
+                  title="Clear filter"
+                >
+                  ✕ Clear
+                </button>
+              </div>
+            )}
+          </div>
+
+          {totalCount === 0 && (
+            <div className="no-projects">
+              <p>No projects currently tagged with <strong>"{activeSkill}"</strong>.</p>
+              <button type="button" className="btn" onClick={() => setActiveSkill(null)}>
+                Show All Projects
+              </button>
+            </div>
+          )}
+
+          {filteredFeatured.map((p) => (
             <article className="feature" key={p.name}>
-              <h3>{p.name}</h3>
+              <div className="feature-head">
+                <h3>{p.name}</h3>
+                {p.featured && <span className="featured-badge">Featured</span>}
+              </div>
               <p className="tech">{p.tech}</p>
               <p>{p.text}</p>
+              {p.tags && (
+                <div className="project-tags">
+                  {p.tags.map((t) => (
+                    <button
+                      type="button"
+                      key={t}
+                      className={`tag-chip ${activeSkill === t ? 'active' : ''}`}
+                      onClick={() => setActiveSkill((prev) => (prev === t ? null : t))}
+                      title={`Filter by ${t}`}
+                    >
+                      #{t}
+                    </button>
+                  ))}
+                </div>
+              )}
             </article>
           ))}
+
           <ul className="rows">
-            {rest.map((p) => (
+            {filteredRest.map((p) => (
               <li key={p.name}>
                 <div className="row-head">
                   <h3>{p.name}</h3>
                   <span className="tech">{p.tech}</span>
                 </div>
                 <p>{p.text}</p>
+                {p.tags && (
+                  <div className="project-tags">
+                    {p.tags.map((t) => (
+                      <button
+                        type="button"
+                        key={t}
+                        className={`tag-chip ${activeSkill === t ? 'active' : ''}`}
+                        onClick={() => setActiveSkill((prev) => (prev === t ? null : t))}
+                        title={`Filter by ${t}`}
+                      >
+                        #{t}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -105,13 +179,26 @@ export default function App() {
 
         <section id="skills" className="wrap section">
           <h2>Skills</h2>
+          <p className="skills-subtext">Click any skill to filter matching projects above:</p>
           <dl className="skills">
             {skills.map((s) => (
               <div key={s.group}>
                 <dt>{s.group}</dt>
                 <dd>
                   {s.items.map((i) => (
-                    <span className="chip" key={i}>{i}</span>
+                    <button
+                      type="button"
+                      className={`chip ${activeSkill === i ? 'active' : ''}`}
+                      key={i}
+                      onClick={() => {
+                        setActiveSkill((prev) => (prev === i ? null : i))
+                        const el = document.getElementById('projects')
+                        if (el) el.scrollIntoView({ behavior: 'smooth' })
+                      }}
+                      title={`Filter projects using ${i}`}
+                    >
+                      {i}
+                    </button>
                   ))}
                 </dd>
               </div>
@@ -184,4 +271,3 @@ export default function App() {
     </>
   )
 }
-
